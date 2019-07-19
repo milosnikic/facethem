@@ -1,0 +1,42 @@
+
+.cover-img{
+	position:absolute;
+	
+	top:42px;
+	left:0;
+	padding-top:0;
+	margin:0;
+	background-image:url("https://support.faceit.com/hc/en-us/article_attachments/203677424/Screen_Shot_2016-11-28_at_20.35.11.png");
+	
+	width:100%;
+	height:450px;
+	text-transform:uppercase;
+	background-position:center;
+	background-repeat:norepeat;
+	background-size:cover;	
+	
+}
+
+.profile-pic-main{
+	position:absolute;
+	width:200px;
+	height:200px;
+	background-color:transparent;
+	margin:0;
+	margin-top:-50px;
+	border:1px solid black;
+	background-image:url("https://cdn.faceit.com/avatars/ec81476d-e19d-449d-af6e-ad19efc8446f_1545154891565.jpg");
+	background-position:center;
+	background-repeat:no-repeat;
+	z-index:1;
+}
+
+.info{
+	margin-top:300px;
+	
+}
+
+
+
+
+

@@ -1,0 +1,50 @@
+{% load static %}
+<html lang="en">
+<head>
+    <title>FACETHEM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile-nav-bar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+    <link rel="shortcut icon" type="image/png"
+          href="https://theme.zdassets.com/theme_assets/942341/7b70f7ab8db1152e504b1e35eae3b740b13dec16.jpg"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="sidenav">
+    <a class="item" id="logo" href="{% url 'index' %}"><i class="fas fa-location-arrow fa-rotate-90"></i></a>
+    <div class="separator"></div>
+    {% if request.session.user %}
+        <a class="item" href="{% url 'profile' request.session.username %}" title="Profile"><i class="fas fa-user-alt"></i></a>
+    {% endif %}
+    <a class="item" href="{% url 'latest_matches' %}" title="Matches"><i class="fab fa-google-play"></i></a>
+    <div class="separator"></div>
+    <a class="item" href="{% url 'settings' %}" title="Settings"><i class="fas fa-cog"></i></a>
+    <a class="item" href="{% url 'search' %}"><i class="fas fa-search"></i></a>
+    <div class="separator"></div>
+    <a class="item" href="{% url 'developer' %}" title="Developer API"><i class="fas fa-code"></i></i></a>
+</div>
+<div class="header-cont">
+    <div class="header">
+        <a class="facethem" href="{% url 'index' %}">facethem</a>
+        <div class="header-right">
+            {% block login%}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+<div class="cover">
+</div>
+<div class="container-full">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

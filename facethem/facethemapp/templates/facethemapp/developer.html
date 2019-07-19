@@ -1,0 +1,54 @@
+{% extends 'facethemapp/base.html' %}
+{% block login %}
+{% if request.session.user %}
+<ul class="profile-info">
+    <li><a class="elo" href="#">{{request.session.elo}}<img
+            src="https://cdn-frontend.faceit.com/web/960/src/app/assets/images-compress/skill-icons/skill_level_10_svg.svg"></a>
+    </li>
+    <li><a class="notifications" href="#"><i class="fas fa-globe-americas"></i></a></li>
+    <li><a class="profile-pic" href="{% url 'profile' request.session.username %}"><img
+            src="{{request.session.avatar}}"></a>
+    </li>
+    <li
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu" id="menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'profile' request.session.username %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'friends' %}">Friends</a>
+                <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
+                <a class="dropdown-item" href="{% url 'logout_user' %}">Log out</a>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endif %}
+{% endblock %}
+{% block content %}
+<h2>Take some information from us</h2>
+<p>Here are some services available. Underneath each service is well documented with example.</p>
+<table style="width:30%">
+    <tr>
+        <th>Resource</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><a>GET</a>TBA</td>
+        <td>Get all information about user in JSON</td>
+    </tr>
+    <tr>
+        <td><a>GET</a>TBA</td>
+        <td>Get FACEIT elo for specified user.</td>
+    </tr>
+    <tr>
+        <td><a>GET</a>TBA</td>
+        <td>Get number of matches for specified user.</td>
+    </tr>
+    <tr>
+        <td><a>GET</a>TBA</td>
+        <td>Get statistics for specified user.</td>
+    </tr>
+</table>
+{% endblock %}

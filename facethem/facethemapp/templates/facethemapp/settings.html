@@ -1,0 +1,55 @@
+{% extends 'facethemapp/base.html' %}
+{% block login %}
+{% if request.session.user %}
+<ul class="profile-info">
+    <li><a class="elo" href="#">{{request.session.elo}}<img
+            src="https://cdn-frontend.faceit.com/web/960/src/app/assets/images-compress/skill-icons/skill_level_10_svg.svg"></a>
+    </li>
+    <li><a class="notifications" href="#"><i class="fas fa-globe-americas"></i></a></li>
+    <li><a class="profile-pic" href="{% url 'profile' request.session.username %}"><img
+            src="{{request.session.avatar}}"></a>
+    </li>
+    <li>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu" id="menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'profile' request.session.username %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'friends' %}">Friends</a>
+                <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
+                <a class="dropdown-item" href="{% url 'logout_user' %}">Log out</a>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endif %}
+{% endblock %}
+{% block content %}
+<a><h3>Change your account settings</h3></a>
+<form method="post" action="">
+    <div class="register-form">
+        {% csrf_token %}
+        <p>Enter your email address:
+            <input type="email" name="email">
+        </p>
+        <br>
+        <p>Enter your password:
+            <input type="password" name="password">
+        </p>
+        <br>
+        <p>Choose your profile picture:
+            <input class="file-input" type="file" formats="png,jpg,gif" name="profile-pic">
+        </p>
+        <br>
+        <p>Choose your cover picture:
+            <input class="file-input" type="file" formats="png,jpg,gif" name="cover-pic">
+        </p>
+        <br>
+        <input class="submit" type="submit" value="SUBMIT" name="submit">
+    </div>
+</form>
+{% endblock %}
+
+

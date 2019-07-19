@@ -1,0 +1,28 @@
+{% extends 'facethemapp/base.html' %}
+{% block content %}
+<a><h2>Register today!</h2></a>
+<div class="register-form">
+    <form method="post" action="">
+        {% csrf_token %}
+        <p>Enter your email address:
+            <input type="email" name="email">
+        </p>
+        <br>
+        <p>Enter your password:
+            <input type="password" name="password">
+        </p>
+        <br>
+        <p>Enter your FACEIT nickname:
+            <input type="text" name="nickname">
+        </p>
+        <br>
+        <p>Enter date when your faceit is created:
+            <input type="date" name="date" placeholder="Date">
+            <small style="bottom:-200px;">Please make sure you enter correct date!</small>
+        </p>
+        <br>
+        <input class="submit" type="submit" value="SUBMIT" name="submit">
+    </form>
+</div>
+<small style="bottom:-250px">If you have registered you can login <a href="{% url 'login' %}">here</a></small>
+{% endblock %}

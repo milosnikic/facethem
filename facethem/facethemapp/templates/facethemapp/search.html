@@ -1,0 +1,49 @@
+{% extends 'facethemapp/base.html' %}
+{% block login %}
+{% if request.session.user %}
+<ul class="profile-info">
+    <li><a class="elo" href="#">{{request.session.elo}}<img
+            src="https://cdn-frontend.faceit.com/web/960/src/app/assets/images-compress/skill-icons/skill_level_10_svg.svg"></a>
+    </li>
+    <li><a class="notifications" href="#"><i class="fas fa-globe-americas"></i></a></li>
+    <li><a class="profile-pic" href="{% url 'profile' request.session.username %}"><img
+            src="{{request.session.avatar}}"></a>
+    </li>
+    <li>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu" id="menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'profile' request.session.username %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'friends' %}">Friends</a>
+                <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
+                <a class="dropdown-item" href="{% url 'logout_user' %}">Log out</a>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endif %}
+{% endblock %}
+{% block content %}
+<h2>Here you can search for friends!</h2>
+<div style="margin-top:50px;">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input class="search-box" type="text" name="search" placeholder="Enter NICKNAME">
+        <input class="search-submit" type="submit" value="SEARCH">
+    </form>
+</div>
+<div class="friends-show" style="margin-top:50px;">
+    <table style="width:50%">
+        {% for user in users %}
+        <tr>
+            <td class="table-item"><a href="#">{{user.username}}<img
+                    src="{{user.avatar}}"
+                    style="width:40px;border-radius:50%"></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

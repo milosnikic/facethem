@@ -1,0 +1,9 @@
+{% extends 'facethemapp/profile-base.html' %}
+{% block name %}
+    <a href="{% url 'profile' request.session.username %}"><h2 style="position:absolute;bottom:10px;left:11em;">{{ request.session.username }}</h2></a>
+{% endblock %}
+{% block display %}
+    <div>
+
+    </div>
+{% endblock%}

@@ -1,0 +1,75 @@
+{% extends 'facethemapp/profile-base.html' %}
+{% block name %}
+<a href="{% url 'profile' request.session.username %}"><h2 style="position:absolute;bottom:10px;left:11em;">{{request.session.username }}</h2></a>
+{% endblock %}
+{% block login %}
+{% if request.session.user %}
+<ul class="profile-info">
+    <li><a class="elo" href="#">{{request.session.elo}}<img
+            src="https://cdn-frontend.faceit.com/web/960/src/app/assets/images-compress/skill-icons/skill_level_10_svg.svg"></a>
+    </li>
+    <li><a class="notifications" href="#"><i class="fas fa-globe-americas"></i></a></li>
+    <li><a class="profile-pic" href="{% url 'profile' request.session.username %}">
+        <img
+                src="{{request.session.avatar}}"></a>
+    </li>
+    <li>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu" id="menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'profile' request.session.username %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'friends' %}">Friends</a>
+                <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
+                <a class="dropdown-item" href="{% url 'logout_user' %}">Log out</a>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endif %}
+{% endblock %}
+{% block display %}
+<div class="info">
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id pellentesque erat. Ut tempus, quam at sodales
+    egestas, tortor dui posuere velit, id facilisis tortor neque et eros. Duis elementum elit et lectus vulputate
+    maximus. Nullam scelerisque nibh quis tortor malesuada, quis semper enim consequat. Orci varius natoque
+    penatibus et magnis dis parturient montes, nascetur ridiculus mus. In eget suscipit quam, id iaculis felis.
+    Etiam ullamcorper turpis faucibus enim ullamcorper, eu vestibulum eros convallis. Donec aliquam, eros id luctus
+    fermentum, est urna ornare nisi, ut imperdiet lectus nunc nec augue. Pellentesque sed nisi lobortis, lobortis
+    quam nec, posuere ante. Etiam elit ex, gravida et nisi vitae, finibus semper risus. Nulla urna ex, interdum ut
+    risus a, congue commodo lacus. Nulla facilisi. Phasellus lobortis elit feugiat sodales posuere. Nunc placerat
+    auctor arcu, sed euismod erat fringilla eget.
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor fermentum ornare. Suspendisse tortor
+    magna, bibendum sed facilisis cursus, accumsan eget est. Donec posuere maximus justo, ullamcorper tempus magna.
+    Mauris nec sem quam. Duis eget finibus urna, sit amet scelerisque ex. Donec hendrerit risus a commodo bibendum.
+    Mauris et congue sem. Duis iaculis justo eu eros fringilla bibendum at pulvinar tellus.
+
+    In gravida sapien eget lectus faucibus, et vestibulum elit convallis. Pellentesque lectus leo, lobortis id odio
+    non, vestibulum euismod turpis. Donec egestas sagittis justo in vulputate. Pellentesque nec lectus tincidunt,
+    tincidunt ligula nec, volutpat nunc. Fusce ultrices est sit amet turpis tincidunt, eget finibus dui luctus.
+    Donec elementum interdum aliquet. Vivamus iaculis augue ac turpis feugiat mattis. Aenean hendrerit velit vitae
+    nibh euismod, at tristique arcu efficitur. Morbi fringilla pretium mi sit amet lacinia. Integer scelerisque non
+    sem a hendrerit. Proin bibendum, lorem nec auctor aliquam, lorem enim sagittis elit, sed dictum nisi metus vel
+    augue. Nullam arcu justo, maximus et nisl sit amet, lacinia sodales eros.
+
+    Etiam eu tempor dui. Sed sed mi in metus ultricies convallis. Aenean pharetra dignissim tortor, at condimentum
+    dolor dignissim ac. In interdum facilisis urna, non aliquet nibh imperdiet et. In vitae aliquet mauris, quis
+    ullamcorper justo. Etiam dignissim dui vitae massa tincidunt laoreet. Nulla eleifend purus in lectus posuere
+    porttitor. Mauris metus diam, lobortis vitae odio ac, rhoncus pellentesque eros. Donec faucibus, magna
+    sollicitudin vulputate egestas, magna quam pulvinar quam, auctor feugiat nulla orci quis orci. Aenean mollis
+    aliquam ante. Nulla venenatis magna vitae iaculis elementum. Donec volutpat pretium velit sit amet vehicula.
+    Aliquam fermentum et metus sit amet pretium. Nullam scelerisque magna eu ex varius egestas. Orci varius natoque
+    penatibus et magnis dis parturient montes, nascetur ridiculus mus. In porttitor gravida libero, rhoncus
+    malesuada nunc tincidunt eget.
+
+    Aenean fringilla aliquet facilisis. Mauris consectetur urna non tellus efficitur blandit. Nulla congue tellus in
+    tortor commodo fermentum. Praesent tempus in dolor at hendrerit. Donec blandit, arcu a feugiat mattis, tortor
+    enim egestas nisi, ac porttitor justo justo quis leo. Quisque laoreet, metus quis porta egestas, erat lectus
+    pulvinar lectus, in malesuada nisi est ac nunc. Etiam in tortor nunc. Duis sollicitudin nibh metus, sit amet
+    scelerisque dolor molestie vel.
+</div>
+{% endblock%}

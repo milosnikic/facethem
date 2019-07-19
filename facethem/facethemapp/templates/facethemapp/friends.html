@@ -1,0 +1,53 @@
+{% extends 'facethemapp/base.html' %}
+{% block login %}
+{% if request.session.user %}
+<ul class="profile-info">
+    <li><a class="elo" href="#">{{request.session.elo}}<img
+            src="https://cdn-frontend.faceit.com/web/960/src/app/assets/images-compress/skill-icons/skill_level_10_svg.svg"></a>
+    </li>
+    <li><a class="notifications" href="#"><i class="fas fa-globe-americas"></i></a></li>
+    <li><a class="profile-pic" href="{% url 'profile' request.session.username %}"><img
+            src="{{request.session.avatar}}"></a>
+    </li>
+    <li>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu" id="menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'profile' request.session.username %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'friends' %}">Friends</a>
+                <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
+                <a class="dropdown-item" href="{% url 'logout_user' %}">Log out</a>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endif %}
+{% endblock %}
+{% block content %}
+<h2>Here are your friends!</h2>
+<table style="width:10%">
+    <tr>
+        <td class="table-item"><a href="#">EXR1G<img
+                src="https://cdn.faceit.com/avatars/ec81476d-e19d-449d-af6e-ad19efc8446f_1545154891565.jpg"
+                style="width:40px;border-radius:50%"></a></td>
+    </tr>
+    <tr>
+        <td class="table-item">
+            <a href="#">bajovic <img
+                    src="https://d50m6q67g4bn3.cloudfront.net/avatars/fad08feb-fadd-4ac3-b472-d5e0d9f21f2f_1521421498093"
+                    style="width:40px;border-radius:50%"></a>
+        </td>
+    </tr>
+    <tr>
+        <td class="table-item">
+            <a href="#">jeRX <img
+                    src="https://cdn.faceit.com/avatars/a7a7b090-02c8-4154-b44e-3b9e8df5ef7f_1542228284679.jpg"
+                    style="width:40px;border-radius:50%">
+            </a>
+        </td>
+    </tr>
+</table>
+{% endblock %}

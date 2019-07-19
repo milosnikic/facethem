@@ -1,0 +1,21 @@
+{% extends 'facethemapp/profile-base.html' %}
+{% block name %}
+<a href="{% url 'profile' request.session.username %}"><h2 style="position:absolute;bottom:10px;left:11em;">{{request.session.username }}</h2></a>
+{% endblock %}
+{% block display %}
+<div style="margin-top:250px;">
+    <h2>Here are your friends!</h2>
+
+    <table style="width:30%">
+        {% for user in friends %}
+        <tr>
+            <td class="table-item" >
+                <a href="#">{{ user.username }} <img
+                        src="{{ user.avatar }}"
+                        style="width:40px;border-radius:50%"></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock%}

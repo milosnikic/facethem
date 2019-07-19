@@ -1,0 +1,64 @@
+{% extends 'facethemapp/base.html' %}
+{% block login %}
+{% if request.session.user %}
+<ul class="profile-info">
+    <li><a class="elo" href="#">{{request.session.elo}}<img
+            src="https://cdn-frontend.faceit.com/web/960/src/app/assets/images-compress/skill-icons/skill_level_10_svg.svg"></a>
+    </li>
+    <li><a class="notifications" href="#"><i class="fas fa-globe-americas"></i></a></li>
+    <li><a class="profile-pic" href="{% url 'profile' request.session.username %}"><img
+            src="{{request.session.avatar}}"></a>
+    </li>
+    <li>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-menu" id="menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'profile' request.session.username %}">Profile</a>
+                <a class="dropdown-item" href="{% url 'friends' %}">Friends</a>
+                <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
+                <a class="dropdown-item" href="{% url 'logout_user' %}">Log out</a>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endif %}
+{% endblock %}
+{% block content %}
+<h2>See your latest results!</h2>
+<p class="desc">Here you can search through your match history and get some interesting statistics.</p>
+<a><h3>Latest users registered!</h3></a>
+<div class="latest-users">
+    <ul>
+        {% for user in users %}
+            <li class="item"><a href="{% url 'profile' user.username %}"><img src="{{ user.avatar }}" style="width:42px;border-radius:50%;" title="{{ user.nickname }}"></a></li>
+        {% endfor %}
+    </ul>
+</div>
+<a><h3>Register today!</h3></a>
+<div class="register-form">
+    <form method="post" action="">
+        {% csrf_token %}
+        <p>Enter your email address:
+            <input type="email" name="email">
+        </p>
+        <br>
+        <p>Enter your password:
+            <input type="password" name="password">
+        </p>
+        <br>
+        <p>Enter your FACEIT nickname:
+            <input type="text" name="username">
+        </p>
+        <br>
+        <p>Enter date when your faceit is created:
+            <input type="date" name="date" placeholder="Date">
+        </p>
+        <br>
+        <input class="submit" type="submit" value="SUBMIT" name="submit">
+    </form>
+</div>
+<small>If you have registered you can login <a href="{% url 'login' %}">here</a></small>
+{% endblock %}
